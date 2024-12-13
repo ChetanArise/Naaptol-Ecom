@@ -19,19 +19,19 @@ import pom.ProductDetailPage;
 public class ProductDetailTest extends BaseTest
 {
 	@BeforeMethod
-	 public void LaunchApplication() 
+	 public void launchApplication() 
 	 {
 	  driver =Browser.openbrowser();
 	 }
 	 
 	@Test (priority =1)
-	public void VerifyAddToCartUsingProductDetailPage()
+	public void verifyAddToCartUsingProductDetailPage()
 	{
-		test=reports.createTest("VerifyAddToCartUsingProductDetailPage");
+		test=reports.createTest("verifyAddToCartUsingProductDetailPage");
 		NaaptolHomePage naaptolHomePage= new NaaptolHomePage(driver);
-		naaptolHomePage.SearchValidProduct("mobile phone");
-		naaptolHomePage.ClickOnSearch();
-		naaptolHomePage.ClickOnProduct();
+		naaptolHomePage.searchValidProduct("mobile phone");
+		naaptolHomePage.clickOnSearch();
+		naaptolHomePage.clickOnProduct();
 		
 	 Set<String> s= driver.getWindowHandles();
 	 Iterator<String> i=s.iterator();
@@ -42,16 +42,15 @@ public class ProductDetailTest extends BaseTest
 		 driver.switchTo().window(s1);
 	 }
 	 ProductDetailPage productDetailPage = new ProductDetailPage(driver);
-	 String dpn = productDetailPage.GetProductName();
+	 String dpn = productDetailPage.getProductName();
 	 double dpp = productDetailPage.getProductPrice();
-	 productDetailPage.ClickOnAddToCartButton(0);
+	 productDetailPage.clickOnAddToCartButton(0);
 	 
 	 NaaptolCartPage naaptolCartPage = new NaaptolCartPage(driver);
-	 String cpn=naaptolCartPage.getProductname(0);
-	 double cpp=naaptolCartPage.GetProductPrice(1);
+	 String cpn=naaptolCartPage.getProductName(0);
+	 double cpp=naaptolCartPage.getProductPrice(1);
 	 
 	 Assert.assertEquals(cpn, dpn);
 	 Assert.assertEquals(cpp, dpp);	
 	}
-	
 }

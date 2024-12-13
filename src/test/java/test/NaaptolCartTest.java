@@ -38,56 +38,56 @@ public class NaaptolCartTest extends BaseTest
 	 }
 
 	@Test (priority = 1)
-	public void VerifyAddProductToCartUsingQuickView()
+	public void verifyAddProductToCartUsingQuickView()
 	{
-		test=reports.createTest("VerifyAddProductToCartUsingQuickView");
+		test=reports.createTest("verifyAddProductToCartUsingQuickView");
 		 NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-		 naaptolHomePage.SearchValidProduct("mobile phone");
-		 naaptolHomePage.ClickOnSearch();
-		 naaptolHomePage.MouseHoverOnProduct(driver,0);
-		 naaptolHomePage.ClickOnQuickView();
+		 naaptolHomePage.searchValidProduct("mobile phone");
+		 naaptolHomePage.clickOnSearch();
+		 naaptolHomePage.mouseHoverOnProduct(driver,0);
+		 naaptolHomePage.clickOnQuickView();
 		 NaaptolQuickView naaptolQuickView= new NaaptolQuickView(driver);
-		 String qpn=naaptolQuickView.GetQuickProductName();
-		 double qpp =naaptolQuickView.GetQuickProductPrice();
+		 String qpn=naaptolQuickView.getQuickProductName();
+		 double qpp =naaptolQuickView.getQuickProductPrice();
 		
-		 naaptolQuickView.ClickOnAddToCartButton(0);
+		 naaptolQuickView.clickOnAddToCartButton(0);
 		 NaaptolCartPage naaptolCartPage = new NaaptolCartPage(driver);
-		 String cpn= naaptolCartPage.getProductname(0);
-		 double cpp= naaptolCartPage.GetProductPrice(1);
+		 String cpn= naaptolCartPage.getProductName(0);
+		 double cpp= naaptolCartPage.getProductPrice(1);
 			 
 		 Assert.assertEquals(cpn,qpn);
 		 Assert.assertEquals(cpp,qpp); 
 	}
 	@Test (priority = 2)
-	public void VerifyAddingMultipleProductToCart() throws InterruptedException
+	public void verifyAddingMultipleProductToCart() throws InterruptedException
 	{
-		test=reports.createTest("VerifyAddingMultipleProductToCart");
+		test=reports.createTest("verifyAddingMultipleProductToCart");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-		naaptolHomePage.SearchValidProduct("mobile phone");
-		naaptolHomePage.ClickOnSearch();
+		naaptolHomePage.searchValidProduct("mobile phone");
+		naaptolHomePage.clickOnSearch();
 		String hpn1=naaptolHomePage.getProductname(0);
 		double hpp1=naaptolHomePage.getProductprice(0);
 		String hpn2=naaptolHomePage.getProductname(2);
 		double hpp2=naaptolHomePage.getProductprice(2);
 		
-		naaptolHomePage.MouseHoverOnProduct(driver,0);
-		naaptolHomePage.ClickOnQuickview(0);
+		naaptolHomePage.mouseHoverOnProduct(driver,0);
+		naaptolHomePage.clickOnQuickview(0);
 		NaaptolQuickView naaptolQuickView= new NaaptolQuickView(driver);
-		naaptolQuickView.ClickOnAddToCartButton(0);
+		naaptolQuickView.clickOnAddToCartButton(0);
 		NaaptolCartPage naaptolCartPage= new NaaptolCartPage(driver);
-		String cpn1= naaptolCartPage.getProductname(0);
-		double cpp1= naaptolCartPage.GetProductPrice(1);
-		naaptolCartPage.ClickOnClose();
-		naaptolQuickView.ClickOnClose();
+		String cpn1= naaptolCartPage.getProductName(0);
+		double cpp1= naaptolCartPage.getProductPrice(1);
+		naaptolCartPage.clickOnClose();
+		naaptolQuickView.clickOnClose();
 		
-		naaptolHomePage.MouseHoverOnProduct(driver,2);
-		naaptolHomePage.ClickOnQuickview(2);
-		naaptolQuickView.ClickOnAddToCart();
+		naaptolHomePage.mouseHoverOnProduct(driver,2);
+		naaptolHomePage.clickOnQuickview(2);
+		naaptolQuickView.clickOnAddToCart();
 		Thread.sleep(2000);
-		String cpn2= naaptolCartPage.getProductname(0);
-		double cpp2= naaptolCartPage.GetProductPrice(1);
-		naaptolCartPage.ClickOnClose();
-		naaptolQuickView.ClickOnClose();
+		String cpn2= naaptolCartPage.getProductName(0);
+		double cpp2= naaptolCartPage.getProductPrice(1);
+		naaptolCartPage.clickOnClose();
+		naaptolQuickView.clickOnClose();
 		
 		Assert.assertEquals(cpn1,hpn1);
 		Assert.assertEquals(cpn2,hpn2); 
@@ -95,65 +95,65 @@ public class NaaptolCartTest extends BaseTest
 		Assert.assertEquals(cpp2,hpp2);
 	}
 	@Test (priority = 3)
-	public void VerifyRemovingProductFromProduct() throws StaleElementReferenceException,InterruptedException
+	public void verifyRemovingProductFromProduct() throws StaleElementReferenceException,InterruptedException
 	{
-		test=reports.createTest("VerifyRemovingProductFromProduct");
+		test=reports.createTest("verifyRemovingProductFromProduct");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-		naaptolHomePage.SearchValidProduct("mobile phone");
-		naaptolHomePage.ClickOnSearch();
+		naaptolHomePage.searchValidProduct("mobile phone");
+		naaptolHomePage.clickOnSearch();
 		
-		naaptolHomePage.MouseHoverOnProduct(driver,0);
-		naaptolHomePage.ClickOnQuickview(0);
+		naaptolHomePage.mouseHoverOnProduct(driver,0);
+		naaptolHomePage.clickOnQuickview(0);
 		NaaptolQuickView naaptolQuickView= new NaaptolQuickView(driver);  
-		naaptolQuickView.ClickOnAddToCartButton(0);
+		naaptolQuickView.clickOnAddToCartButton(0);
 		NaaptolCartPage naaptolCartPage= new NaaptolCartPage(driver);
-		naaptolCartPage.ClickOnClose();
-		naaptolQuickView.ClickOnClose();
+		naaptolCartPage.clickOnClose();
+		naaptolQuickView.clickOnClose();
 		
-		naaptolHomePage.MouseHoverOnProduct(driver,1);
-		naaptolHomePage.ClickOnQuickview(1);
-		naaptolQuickView.ClickOnAddToCart();
+		naaptolHomePage.mouseHoverOnProduct(driver,1);
+		naaptolHomePage.clickOnQuickview(1);
+		naaptolQuickView.clickOnAddToCart();
 		Thread.sleep(2000);
-		int c1=naaptolCartPage.GetCartProductListCount();
+		int c1=naaptolCartPage.getCartProductListCount();
 		Thread.sleep(2000);
-		naaptolCartPage.ClickOnRemove(0);
+		naaptolCartPage.clickOnRemove(0);
 		Thread.sleep(2000);
-		naaptolCartPage.ClickOnRemove(0);
+		naaptolCartPage.clickOnRemove(0);
 		
 //		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='cartItems']//ul")));
 		
 		Thread.sleep(2000);
-		int c2=naaptolCartPage.GetCartProductListCount();
+		int c2=naaptolCartPage.getCartProductListCount();
 	    
 		Assert.assertNotSame(c1,c2);	
 	}
 	
 	@Test (priority = 4)
-	public void VerifyOnChangingProductQuantityCorrectAmountIsDisplayed() throws InterruptedException
+	public void verifyOnChangingProductQuantityCorrectAmountIsDisplayed() throws InterruptedException
 	{
-		test=reports.createTest("VerifyOnChangingProductQuantityCorrectAmountIsDisplayed");
+		test=reports.createTest("verifyOnChangingProductQuantityCorrectAmountIsDisplayed");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-		naaptolHomePage.SearchValidProduct("mobile phone");
-		naaptolHomePage.ClickOnSearch();
+		naaptolHomePage.searchValidProduct("mobile phone");
+		naaptolHomePage.clickOnSearch();
 		
-		naaptolHomePage.MouseHoverOnProduct(driver,0);
-		naaptolHomePage.ClickOnQuickview(0);
+		naaptolHomePage.mouseHoverOnProduct(driver,0);
+		naaptolHomePage.clickOnQuickview(0);
 		NaaptolQuickView naaptolQuickView= new NaaptolQuickView(driver);
-		naaptolQuickView.ClickOnAddToCartButton(0);
+		naaptolQuickView.clickOnAddToCartButton(0);
 		
 		NaaptolCartPage naaptolCartPage= new NaaptolCartPage(driver);
 		Thread.sleep(2000);
-		double cpp = naaptolCartPage.GetProductPrice(1);
+		double cpp = naaptolCartPage.getProductPrice(1);
 		Thread.sleep(2000);
-		double csp= naaptolCartPage.GetCartShippingPrice(1); 
+		double csp= naaptolCartPage.getCartShippingPrice(1); 
 		Thread.sleep(2000);
 		double orderamount= cpp+csp;
 		Thread.sleep(2000);
-		double coa=naaptolCartPage.GetOrderAmount(1);
+		double coa=naaptolCartPage.getOrderAmount(1);
 		Assert.assertEquals(coa,orderamount);
 		
-	    naaptolCartPage.ClickOnQuantity(1);
+	    naaptolCartPage.clickOnQuantity(1);
 	    Actions act = new Actions(driver);
 	    act.keyDown(Keys.DELETE);
 	    act.keyUp(Keys.DELETE);
@@ -164,56 +164,54 @@ public class NaaptolCartTest extends BaseTest
 	    Thread.sleep(2000);
 	    double orderamount2 =cpp*2+csp; //expected price
 	    Thread.sleep(2000);
-	    double coa2=naaptolCartPage.GetOrderAmount(1); //actual price
+	    double coa2=naaptolCartPage.getOrderAmount(1); //actual price
 	    Assert.assertEquals(coa2,orderamount2);
 		
-		naaptolCartPage.ClickOnClose();
-		naaptolQuickView.ClickOnClose();
+		naaptolCartPage.clickOnClose();
+		naaptolQuickView.clickOnClose();
 		
 	}
 	@Test (priority = 5)
-	public void VerifyTotalAmountForMultipleProductInCart() throws InterruptedException
+	public void verifyTotalAmountForMultipleProductInCart() throws InterruptedException
 	{
 		test=reports.createTest("VerifyTotalAmountForMultipleProductInCart");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-		naaptolHomePage.SearchValidProduct("mobile phone");
-		naaptolHomePage.ClickOnSearch();
-		naaptolHomePage.MouseHoverOnProduct(driver,0);
-		naaptolHomePage.ClickOnQuickview(0);
+		naaptolHomePage.searchValidProduct("mobile phone");
+		naaptolHomePage.clickOnSearch();
+		naaptolHomePage.mouseHoverOnProduct(driver,0);
+		naaptolHomePage.clickOnQuickview(0);
 		
 		NaaptolQuickView naaptolQuickView= new NaaptolQuickView(driver);
-		naaptolQuickView.ClickOnAddToCartButton(0);
+		naaptolQuickView.clickOnAddToCartButton(0);
 		NaaptolCartPage naaptolCartPage= new NaaptolCartPage(driver);
 		Thread.sleep(2000);
-		double cpp = naaptolCartPage.GetProductPrice(1);
+		double cpp = naaptolCartPage.getProductPrice(1);
 		Thread.sleep(2000);
-		double csp= naaptolCartPage.GetCartShippingPrice(1); 
+		double csp= naaptolCartPage.getCartShippingPrice(1); 
 		double orderamount= cpp+csp;
 		Thread.sleep(2000);
-		double coa=naaptolCartPage.GetOrderAmount(1);
+		double coa=naaptolCartPage.getOrderAmount(1);
 		Thread.sleep(2000);
-		naaptolCartPage.ClickOnClose();
-		naaptolQuickView.ClickOnClose();
+		naaptolCartPage.clickOnClose();
+		naaptolQuickView.clickOnClose();
 		
-		naaptolHomePage.MouseHoverOnProduct(driver,1);
-		naaptolHomePage.ClickOnQuickview(1);
+		naaptolHomePage.mouseHoverOnProduct(driver,1);
+		naaptolHomePage.clickOnQuickview(1);
 		
-		naaptolQuickView.ClickOnAddToCart();
+		naaptolQuickView.clickOnAddToCart();
 		Thread.sleep(2000);
-		double cpp1 = naaptolCartPage.GetProductPrice(1);
-		double csp1= naaptolCartPage.GetCartShippingPrice(1);
+		double cpp1 = naaptolCartPage.getProductPrice(1);
+		double csp1= naaptolCartPage.getCartShippingPrice(1);
 		double orderamount1= cpp1+csp1;
 		Thread.sleep(2000);
-		double coa1=naaptolCartPage.GetOrderAmount(1);
+		double coa1=naaptolCartPage.getOrderAmount(1);
 		
 		double cta=coa+coa1;// expected total amount
 		Thread.sleep(2000);
-		double totalamount=naaptolCartPage.GetTotalAmount(); //actual total amount
+		double totalamount=naaptolCartPage.getTotalAmount(); //actual total amount
 		
 		Assert.assertEquals(totalamount,cta);
-		naaptolCartPage.ClickOnClose();
-		naaptolQuickView.ClickOnClose();
+		naaptolCartPage.clickOnClose();
+		naaptolQuickView.clickOnClose();
 	}
-	
-
 }

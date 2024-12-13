@@ -9,35 +9,34 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductDetailPage extends RemoveComma  
 {
- @FindBy (xpath = "//h1[text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement ProductName;
- @FindBy (xpath = "//span[@class='offer-price']") private WebElement ProductPrice;
- @FindBy (xpath = "//ul[@class='sizeBox clearfix']") private WebElement ColorList;
- @FindBy (xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> Color;
- @FindBy (xpath = "//span[text()='Click here to Buy']") private WebElement AddToCartButton;
+ @FindBy (xpath = "//h1[text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement productName;
+ @FindBy (xpath = "//span[@class='offer-price']") private WebElement productPrice;
+ @FindBy (xpath = "//ul[@class='sizeBox clearfix']") private WebElement colorList;
+ @FindBy (xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> color;
+ @FindBy (xpath = "//span[text()='Click here to Buy']") private WebElement addToCartButton;
  
     public ProductDetailPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
 	}
-    public String GetProductName()
+    public String getProductName()
 	{
-	 return ProductName.getText();
+	 return productName.getText();
   	}
     public double getProductPrice() {
- 		String [] p =	ProductPrice.getText().split(" ");
+ 		String [] p =	productPrice.getText().split(" ");
 		return Double.parseDouble(removeCommaFromString(p[0]));
 	}
-    public void ClickOnAddToCartButton(int index)
+    public void clickOnAddToCartButton(int index)
     {
-    	if(ColorList.isDisplayed()==true)
+    	if(colorList.isDisplayed()==true)
     	{
-    		Color.get(index).click();
-    		AddToCartButton.click();
+    		color.get(index).click();
+    		addToCartButton.click();
     	}
     	else
     	{
-    		AddToCartButton.click();
+    		addToCartButton.click();
     	}
     }
- 
 }

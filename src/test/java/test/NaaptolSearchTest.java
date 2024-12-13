@@ -19,29 +19,28 @@ public class NaaptolSearchTest extends BaseTest
 	  driver =Browser.openbrowser();
 	 }
     @Test (priority = 1)
-    public void VerifyIfUserIsAbleToPerformValidSearch() throws InterruptedException
+    public void verifyIfUserIsAbleToPerformValidSearch() throws InterruptedException
     {
-    	test=reports.createTest("VerifyIfUserIsAbleToPerformValidSearch");
+    	test=reports.createTest("verifyIfUserIsAbleToPerformValidSearch");
     	NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-    	naaptolHomePage.SearchValidProduct("Mobile Phone");
-    	naaptolHomePage.ClickOnSearch();
+    	naaptolHomePage.searchValidProduct("Mobile Phone");
+    	naaptolHomePage.clickOnSearch();
     	Thread.sleep(5000);
-    	Assert.assertTrue(naaptolHomePage.ListOfSearchedProducts()>0);
+    	Assert.assertTrue(naaptolHomePage.listOfSearchedProducts()>0);
     	Thread.sleep(5000);
     	Assert.assertTrue(driver.getTitle().contains("Mobile Phone"));
-    	System.out.println(naaptolHomePage.ListOfSearchedProducts());
+    	System.out.println(naaptolHomePage.listOfSearchedProducts());
 //    	Assert.assertTrue(naaptolHomePage.ListOfSearchedProducts()>0);
     }
     
     @Test (priority = 2)
-    public void VerifyIfUserIsAbleToPerformInValidSearch()
+    public void verifyIfUserIsAbleToPerformInValidSearch()
     {
-    	test=reports.createTest("VerifyIfUserIsAbleToPerformInValidSearch");
+    	test=reports.createTest("verifyIfUserIsAbleToPerformInValidSearch");
     	NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-    	naaptolHomePage.SearchInvalidProduct("iPhone");
-    	naaptolHomePage.ClickOnSearch();
+    	naaptolHomePage.searchInvalidProduct("iPhone");
+    	naaptolHomePage.clickOnSearch();
     	Assert.assertTrue(driver.getTitle().contains("iPhone"));
-    	Assert.assertEquals(naaptolHomePage.ListOfSearchedProducts(),0);
+    	Assert.assertEquals(naaptolHomePage.listOfSearchedProducts(),0);
     }
-
 }

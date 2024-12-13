@@ -13,129 +13,129 @@ import org.openqa.selenium.support.ui.Select;
 
 public class NaaptolHomePage extends RemoveComma 
 {
-	@FindBy(xpath = "//input [@id='header_search_text']")private WebElement SearchTab;
-	@FindBy(xpath = "(//a [@href='javascript:autoSuggestion.headerSearch()'])[2]")private WebElement SearchButton;
-	@FindBy (xpath ="//div[@class='item_title']") private List<WebElement> SearchedProducts;  
-	@FindBy (xpath="//a [text()='Log In / Register']") private WebElement Login;
-	@FindBy (xpath="//input [@placeholder='Enter mobile number']") private WebElement MobileNo;
-	@FindBy (xpath="//input [@value='Continue']") private WebElement Continue; 
-	@FindBy (xpath="//input [@maxlength='6']") private WebElement Otp;
-	@FindBy (xpath="//input [@value='Submit']") private WebElement Submit; 
-	@FindBy (xpath = "//span [text()='Shopping Categories']") private WebElement ShoppingCategory;
-	@FindBy (xpath = "//a [text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement ProductName;
-	@FindBy (xpath = "//div [@class='item_title']") private List<WebElement> ProductNameList;
-	@FindBy (xpath = "//div[@id='mainMenuContent']") private WebElement ShoppingCategoryList;
-	@FindBy (xpath = "//span[@class='offer-price']") private WebElement ProductPrice;
-	@FindBy (xpath = "//span[@class='offer-price']") private List<WebElement> ProductPriceList;
-	@FindBy (xpath ="//a [@class='bt_compare icon chat quickFancyBox']") private WebElement QuickView;
-	@FindBy (xpath="//span[text()='Quick View']")private List<WebElement> QuickviewList;
-	@FindBy (xpath = "//select[@id='sortByFilter']") private WebElement Sort;
-	@FindBy (xpath = "//select[@id='sortByFilter']//option") List<WebElement> SortOptions;
+	@FindBy(xpath = "//input [@id='header_search_text']")private WebElement searchTab;
+	@FindBy(xpath = "(//a [@href='javascript:autoSuggestion.headerSearch()'])[2]")private WebElement searchButton;
+	@FindBy (xpath ="//div[@class='item_title']") private List<WebElement> searchedProducts;  
+	@FindBy (xpath="//a [text()='Log In / Register']") private WebElement login;
+	@FindBy (xpath="//input [@placeholder='Enter mobile number']") private WebElement mobileNo;
+	@FindBy (xpath="//input [@value='Continue']") private WebElement continueButton;
+	@FindBy (xpath="//input [@maxlength='6']") private WebElement otp;
+	@FindBy (xpath="//input [@value='Submit']") private WebElement submit; 
+	@FindBy (xpath = "//span [text()='Shopping Categories']") private WebElement shoppingCategory;
+	@FindBy (xpath = "//a [text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement productName;
+	@FindBy (xpath = "//div [@class='item_title']") private List<WebElement> productNameList;
+	@FindBy (xpath = "//div[@id='mainMenuContent']") private WebElement shoppingCategoryList;
+	@FindBy (xpath = "//span[@class='offer-price']") private WebElement productPrice;
+	@FindBy (xpath = "//span[@class='offer-price']") private List<WebElement> productPriceList;
+	@FindBy (xpath ="//a [@class='bt_compare icon chat quickFancyBox']") private WebElement quickView;
+	@FindBy (xpath="//span[text()='Quick View']")private List<WebElement> quickviewList;
+	@FindBy (xpath = "//select[@id='sortByFilter']") private WebElement sort;
+	@FindBy (xpath = "//select[@id='sortByFilter']//option") List<WebElement> sortOptions;
 	
 	public NaaptolHomePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
 	}
     
-	public void SearchValidProduct(String item)
+	public void searchValidProduct(String item)
 	{
-		SearchTab.sendKeys(item);
+		searchTab.sendKeys(item);
 	}
-	public void ClickOnSearch()
+	public void clickOnSearch()
 	{
-		SearchButton.click();
+		searchButton.click();
 	}
-	public void SearchInvalidProduct(String item)
+	public void searchInvalidProduct(String item)
 	{
-		SearchTab.sendKeys(item);	
+		searchTab.sendKeys(item);	
 	}
-	public int ListOfSearchedProducts()
+	public int listOfSearchedProducts()
 	{
-		return SearchedProducts.size();
+		return searchedProducts.size();
 	}
-	public void ClickOnLogin()
+	public void clickOnLogin()
 	{
-		Login.click();
+		login.click();
 	}
-    public void EnterMobileNumber(String number)
+    public void enterMobileNumber(String number)
     {
-    	MobileNo.sendKeys(number);
+    	mobileNo.sendKeys(number);
     }
-	public void ClickOnContinue()
+	public void clickOnContinue()
 	{
-		Continue.click();
+		continueButton.click();
 	}
-    public void EnterOtp(String otp)
+    public void enterOtp(String Otp)
     {
-    	Otp.sendKeys(otp);
+    	otp.sendKeys(Otp);
     }
-    public void ClickOnSubmit()
+    public void clickOnSubmit()
 	{
-		Submit.click();
+		submit.click();
 	}
-    public void VerifyShoppingCategories(WebDriver driver)
+    public void verifyShoppingCategories(WebDriver driver)
     {
     	Actions act = new Actions(driver);
-    	act.moveToElement(ShoppingCategory);
+    	act.moveToElement(shoppingCategory);
     	act.perform();
     }
-    public String GetProductName()
+    public String getProductName()
 	{
-	 return ProductName.getText();
+	 return productName.getText();
 	}
-    public void MouseHoverOnProduct(WebDriver driver,int index) 
+    public void mouseHoverOnProduct(WebDriver driver,int index) 
     {
 		Actions act = new Actions(driver);
-		act.moveToElement(ProductNameList.get(index));
+		act.moveToElement(productNameList.get(index));
 		act.perform();
 	}
-    public boolean ShoppingCategoryListDisplayed()
+    public boolean shoppingCategoryListDisplayed()
     {
-    	return ShoppingCategoryList.isDisplayed();
+    	return shoppingCategoryList.isDisplayed();
     }
     public double getProductPrice() {
-		String [] p =	ProductPrice.getText().split(" ");
+		String [] p =	productPrice.getText().split(" ");
 		return Double.parseDouble(removeCommaFromString(p[0]));
 	}
-   public void ClickOnProduct()
+   public void clickOnProduct()
    {
-	   ProductName.click();
+	   productName.click();
    }
-   public void ClickOnQuickView()
+   public void clickOnQuickView()
 	{
-		QuickView.click();
+		quickView.click();
 	}
    public String getProductname(int index)
    {
-	  return ProductNameList.get(index).getText();
+	  return productNameList.get(index).getText();
    }
    public double getProductprice(int index)
    {
-	   String [] p =ProductPriceList.get(index).getText().split(" ");
+	   String [] p =productPriceList.get(index).getText().split(" ");
 		return Double.parseDouble(removeCommaFromString(p[0]));
    }
-	public void ClickOnQuickview(int index)
+	public void clickOnQuickview(int index)
 	{
-		QuickviewList.get(index).click();
+		quickviewList.get(index).click();
 	}
-	public void ClickOnSort()
+	public void clickOnSort()
 	{
-		Sort.click();
+		sort.click();
 	}
-	public void SelectSortOption(String value)
+	public void selectSortOption(String value)
 	{
-		Select s = new Select(Sort);
+		Select s = new Select(sort);
 		s.selectByValue(value);	
-		for (int i = 0; i <SortOptions.size(); i++) 
+		for (int i = 0; i <sortOptions.size(); i++) 
 		{
-	        if (SortOptions.get(i).isSelected()) 
+	        if (sortOptions.get(i).isSelected()) 
 	        {
-	           System.out.println(SortOptions.get(i).getText()+" Option Selected");
+	           System.out.println(sortOptions.get(i).getText()+" Option Selected");
 	        }
 		}
 	}
-	public String GetSortedProductName(int index)
+	public String getSortedProductName(int index)
 	{
-		return SearchedProducts.get(index).getText();
+		return searchedProducts.get(index).getText();
 	}
 }

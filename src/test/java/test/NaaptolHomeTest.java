@@ -27,35 +27,34 @@ public class NaaptolHomeTest extends BaseTest
 	  driver =Browser.openbrowser();
 	 }
 	 @Test (priority = 1)
-	 public void VerifyOnClickingShoppingCategories()
+	 public void verifyOnClickingShoppingCategories()
 	 {
-		 test=reports.createTest("VerifyOnClickingShoppingCategories");
+		 test=reports.createTest("verifyOnClickingShoppingCategories");
 		 NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
-		 naaptolHomePage.VerifyShoppingCategories(driver);
-		 Assert.assertTrue(naaptolHomePage.ShoppingCategoryListDisplayed());
+		 naaptolHomePage.verifyShoppingCategories(driver);
+		 Assert.assertTrue(naaptolHomePage.shoppingCategoryListDisplayed());
 	 }
 	 
 	 @Test (priority = 2)
-	 public void VerifyProductDetailsInQuickView()
+	 public void verifyProductDetailsInQuickView()
 	 {
-		 test=reports.createTest("VerifyProductDetailsInQuickView");
+		 test=reports.createTest("verifyProductDetailsInQuickView");
 		 NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver); 
-		 naaptolHomePage.SearchValidProduct("mobile phone");
-		 naaptolHomePage.ClickOnSearch();
-		 naaptolHomePage.MouseHoverOnProduct(driver,0);
-		 String hpn =naaptolHomePage.GetProductName();
+		 naaptolHomePage.searchValidProduct("mobile phone");
+		 naaptolHomePage.clickOnSearch();
+		 naaptolHomePage.mouseHoverOnProduct(driver,0);
+		 String hpn =naaptolHomePage.getProductName();
 		 
 		 double hpp=naaptolHomePage.getProductPrice();
 		 System.out.println(hpp);
 		 		 
 		 NaaptolQuickView naaptolQuickView = new NaaptolQuickView(driver);
-		 naaptolQuickView.ClickOnQuickView();
-		 String qpn=naaptolQuickView.GetQuickProductName();
-		 double qpp =naaptolQuickView.GetQuickProductPrice();
+		 naaptolQuickView.clickOnQuickView();
+		 String qpn=naaptolQuickView.getQuickProductName();
+		 double qpp =naaptolQuickView.getQuickProductPrice();
 		 
 		 Assert.assertEquals(qpn,hpn);
 		 Assert.assertEquals(qpp,hpp);
-		 
 	 }
 	 
 	 @Test (priority = 3)
@@ -63,13 +62,13 @@ public class NaaptolHomeTest extends BaseTest
 	 {
 		 test=reports.createTest("verifyProductDetailsInNewTab");
 		 NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver); 
-		 naaptolHomePage.SearchValidProduct("mobile phone");
-		 naaptolHomePage.ClickOnSearch();
-		 naaptolHomePage.MouseHoverOnProduct(driver,0);
-		 String hpn =naaptolHomePage.GetProductName();
+		 naaptolHomePage.searchValidProduct("mobile phone");
+		 naaptolHomePage.clickOnSearch();
+		 naaptolHomePage.mouseHoverOnProduct(driver,0);
+		 String hpn =naaptolHomePage.getProductName();
 		 double hpp=naaptolHomePage.getProductPrice();
 		 
-		 naaptolHomePage.ClickOnProduct();
+		 naaptolHomePage.clickOnProduct();
 		 
 		 Set<String> s= driver.getWindowHandles();
 		 
@@ -84,7 +83,7 @@ public class NaaptolHomeTest extends BaseTest
 			 if(title.contains("Buy Dual Sim"))
 			 {
 				 ProductDetailPage productDetailPage= new ProductDetailPage(driver);
-				 String dpn = productDetailPage.GetProductName();
+				 String dpn = productDetailPage.getProductName();
 				 double dpp = productDetailPage.getProductPrice();
 				Assert.assertEquals(dpn,hpn);
 				Assert.assertEquals(hpp,dpp);
@@ -94,25 +93,25 @@ public class NaaptolHomeTest extends BaseTest
 	 }
 	 
 	 @Test (priority = 4)
-	 public void VerifySortFeature() throws InterruptedException
+	 public void verifySortFeature() throws InterruptedException
 	 {
-		 test=reports.createTest("VerifySortFeature");
+		 test=reports.createTest("verifySortFeature");
 		 NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver); 
-		 naaptolHomePage.SearchValidProduct("mobile phone");
-		 naaptolHomePage.ClickOnSearch();
-		 naaptolHomePage.ClickOnSort();
+		 naaptolHomePage.searchValidProduct("mobile phone");
+		 naaptolHomePage.clickOnSearch();
+		 naaptolHomePage.clickOnSort();
 		 Thread.sleep(2000);
 		 String hpn1 =naaptolHomePage.getProductname(0);
 		 String hpn2 =naaptolHomePage.getProductname(1);
 		 String hpn3 =naaptolHomePage.getProductname(2);
-		 naaptolHomePage.SelectSortOption("rated");
-		 String spn1=naaptolHomePage.GetSortedProductName(0);
-		 String spn2=naaptolHomePage.GetSortedProductName(1);
-		 String spn3=naaptolHomePage.GetSortedProductName(2);
+		 naaptolHomePage.selectSortOption("rated");
+		 String spn1=naaptolHomePage.getSortedProductName(0);
+		 String spn2=naaptolHomePage.getSortedProductName(1);
+		 String spn3=naaptolHomePage.getSortedProductName(2);
 		 
 		 Assert.assertNotEquals(spn1,hpn1);
 		 Assert.assertNotEquals(spn2,hpn2);
 		 Assert.assertNotEquals(spn3,hpn3);
-		 	
+		 
 	 }
 }

@@ -10,63 +10,62 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NaaptolQuickView extends RemoveComma 
 {
-	@FindBy(xpath = "//input [@id='header_search_text']")private WebElement SearchTab;
-	@FindBy(xpath = "(//a [@href='javascript:autoSuggestion.headerSearch()'])[2]")private WebElement SearchButton;
-	@FindBy (xpath ="//div [@class='grid_Square']") private List<WebElement> SearchedProducts; 
-    @FindBy (xpath ="//a [@class='bt_compare icon chat quickFancyBox']") private WebElement QuickView;
-    @FindBy (xpath = "//a [text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement ProductName;
-    @FindBy (xpath = "//h1 [text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement QuickProductName;
-    @FindBy (xpath = "//span[@class='offer-price'] ") private WebElement QuickProductPrice;
-    @FindBy (xpath = "//a[text()='Gold']") private WebElement color;
-    @FindBy (xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> Color;
-    @FindBy (xpath = "//ul[@class='sizeBox clearfix']") private WebElement ColorList;
-    @FindBy (xpath="//span[text()='Click here to Buy']") private WebElement AddToCart;
-    @FindBy (xpath = " //button[@type='button']") private WebElement Close;
+	@FindBy(xpath = "//input [@id='header_search_text']")private WebElement searchTab;
+	@FindBy(xpath = "(//a [@href='javascript:autoSuggestion.headerSearch()'])[2]")private WebElement searchButton;
+	@FindBy (xpath ="//div [@class='grid_Square']") private List<WebElement> searchedProducts; 
+    @FindBy (xpath ="//a [@class='bt_compare icon chat quickFancyBox']") private WebElement quickView;
+    @FindBy (xpath = "//a [text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement productName;
+    @FindBy (xpath = "//h1 [text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement quickProductName;
+    @FindBy (xpath = "//span[@class='offer-price'] ") private WebElement quickProductPrice;
+    @FindBy (xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> color;
+    @FindBy (xpath = "//ul[@class='sizeBox clearfix']") private WebElement colorList;
+    @FindBy (xpath="//span[text()='Click here to Buy']") private WebElement addToCart;
+    @FindBy (xpath = " //button[@type='button']") private WebElement close;
 	
 	public NaaptolQuickView(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
 	}
-	public void ClickOnSearchTab(String item)
+	public void clickOnSearchTab(String item)
 	{
-		SearchTab.sendKeys(item);
+		searchTab.sendKeys(item);
 	}
-	public void ClickOnSearch()
+	public void clickOnSearch()
 	{
-		SearchButton.click();
+		searchButton.click();
 	}
-	public void ClickOnQuickView()
+	public void clickOnQuickView()
 	{
-		QuickView.click();
+		quickView.click();
 	}
 	
-	public String GetQuickProductName()
+	public String getQuickProductName()
 	{
-	 return QuickProductName.getText();
+	 return quickProductName.getText();
 	}
-	 public double GetQuickProductPrice() 
+	 public double getQuickProductPrice() 
 	 {
-			String p [] =	QuickProductPrice.getText().split(" ");
+			String p [] =	quickProductPrice.getText().split(" ");
 			return Double.parseDouble(removeCommaFromString(p[0]));
 	 }
-	 public void ClickOnAddToCartButton(int index)
+	 public void clickOnAddToCartButton(int index)
 	    {
-	    	if(ColorList.isDisplayed()==true)
+	    	if(colorList.isDisplayed()==true)
 	    	{
-	    		Color.get(index).click();
-	    		AddToCart.click();
+	    		color.get(index).click();
+	    		addToCart.click();
 	    	}
 	    	else
 	    	{
-	    		AddToCart.click();
+	    		addToCart.click();
 	    	}
 	    }
-	 public void ClickOnAddToCart()
+	 public void clickOnAddToCart()
 	 {
-		 AddToCart.click();
+		 addToCart.click();
 	 }
-	 public void ClickOnClose()
+	 public void clickOnClose()
 	 {
-		 Close.click();
+		 close.click();
 	 }
 }

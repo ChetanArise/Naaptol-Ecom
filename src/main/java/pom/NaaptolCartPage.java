@@ -10,62 +10,62 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NaaptolCartPage extends RemoveComma
 {
- @FindBy (xpath = "//div[@class='cart_info']//h2") private List<WebElement> CartProductName; 
- @FindBy (xpath = "//li[@class='head_UPrice']") private List<WebElement> CartProductPrice;
- @FindBy (xpath = " (//button[@type='button'])[2]") private WebElement Close;
- @FindBy (xpath = "//a[text()='Remove']") private List<WebElement> Remove;
- @FindBy (xpath = "//div[@id='cartItems']//ul") private List<WebElement> CartProductList;
- @FindBy (xpath = "//li[@class='head_ship']") private List<WebElement> CartShippingPrice;
- @FindBy (xpath = "//li[@class='head_Amount']") private List<WebElement> OrderAmount;
- @FindBy (xpath = "//li[@class='head_qty']") private List<WebElement> Quantity;
- @FindBy (xpath = "//span[@id='totalPayableAmount']") private WebElement TotalAmount;
+ @FindBy (xpath = "//div[@class='cart_info']//h2") private List<WebElement> cartProductName; 
+ @FindBy (xpath = "//li[@class='head_UPrice']") private List<WebElement> cartProductPrice;
+ @FindBy (xpath = " (//button[@type='button'])[2]") private WebElement close;
+ @FindBy (xpath = "//a[text()='Remove']") private List<WebElement> remove;
+ @FindBy (xpath = "//div[@id='cartItems']//ul") private List<WebElement> cartProductList;
+ @FindBy (xpath = "//li[@class='head_ship']") private List<WebElement> cartShippingPrice;
+ @FindBy (xpath = "//li[@class='head_Amount']") private List<WebElement> orderAmount;
+ @FindBy (xpath = "//li[@class='head_qty']") private List<WebElement> quantity;
+ @FindBy (xpath = "//span[@id='totalPayableAmount']") private WebElement totalAmount;
 
  public NaaptolCartPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
 	}
- public String getProductname(int index)
+ public String getProductName(int index)
  {
-	  return CartProductName.get(index).getText();
+	  return cartProductName.get(index).getText();
  }
- public double GetProductPrice(int index) {
-		String [] p =	CartProductPrice.get(index).getText().substring(3).split(" ");
+ public double getProductPrice(int index) {
+		String [] p =	cartProductPrice.get(index).getText().substring(3).split(" ");
 		return Double.parseDouble(removeCommaFromString(p[0]));
 	}
- public void ClickOnClose()
+ public void clickOnClose()
  {
-	 Close.click();
+	 close.click();
  }
- public void ClickOnRemove(int index)
+ public void clickOnRemove(int index)
  {
-	 Remove.get(index).click();
+	 remove.get(index).click();
  }
- public int GetCartProductListCount()
+ public int getCartProductListCount()
  {
-	return CartProductList.size();
+	return cartProductList.size();
 	 
  }
- public double GetCartShippingPrice(int index)
+ public double getCartShippingPrice(int index)
  {
-	 String [] s= CartShippingPrice.get(index).getText().substring(3).split(" ");
+	 String [] s= cartShippingPrice.get(index).getText().substring(3).split(" ");
 	 return Double.parseDouble(removeCommaFromString(s[0]));
  }
- public double GetOrderAmount(int index)
+ public double getOrderAmount(int index)
  {
-	 String [] o=OrderAmount.get(index).getText().split(" ");
+	 String [] o=orderAmount.get(index).getText().split(" ");
 	 return Double.parseDouble(removeCommaFromString(o[0]));
  }
- public void ClickOnQuantity(int index)
+ public void clickOnQuantity(int index)
  {
-	 Quantity.get(index).click();
+	 quantity.get(index).click();
  }
- public void EnterQuantity(int index,String quantity)
+ public void enterQuantity(int index,String Quantity)
  {
-	 Quantity.get(index).sendKeys(quantity);;
+	 quantity.get(index).sendKeys(Quantity);;
  }
- public double GetTotalAmount()
+ public double getTotalAmount()
  {
-	 String t[]=TotalAmount.getText().split(" ");
+	 String t[]=totalAmount.getText().split(" ");
 	 return Double.parseDouble(removeCommaFromString(t[0]));
  }
  
