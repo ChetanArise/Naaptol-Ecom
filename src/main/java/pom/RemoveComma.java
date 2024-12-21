@@ -1,7 +1,7 @@
 package pom;
 
 public class RemoveComma {
-	 public String removeCommaFromString(String s) {     //1,999
+	 public String removeCommaFromString(String s) {     
 			String n ="";
 			for(int i=0;i<s.length();i++)
 			{
@@ -10,6 +10,6 @@ public class RemoveComma {
 					n= n+s.charAt(i);
 				}
 			}
-			return n;                                     //1999
+			return n;                                    
 	 }
 }

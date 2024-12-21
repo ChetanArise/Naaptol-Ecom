@@ -12,10 +12,23 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Browser 
 {
 	static WebDriver driver;
-	public static WebDriver openbrowser()
+	public static WebDriver openBrowser(String browserName)
 	{
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		if(browserName.equalsIgnoreCase("Chrome"))
+		{
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+		}
+		else if(browserName.equalsIgnoreCase("Edge"))
+		{
+			WebDriverManager.edgedriver().setup();
+			driver= new EdgeDriver();
+		}
+		else if(browserName.equalsIgnoreCase("Firefox"))
+		{
+			WebDriverManager.firefoxdriver().setup();
+			driver=new FirefoxDriver();
+		}
 		driver.get("https://www.naaptol.com/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); 

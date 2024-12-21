@@ -21,10 +21,10 @@ import pom.ProductDetailPage;
 public class NaaptolHomeTest extends BaseTest
 {
 	
-	@BeforeMethod
+	 @BeforeMethod
 	 public void LaunchApplication() 
 	 {
-	  driver =Browser.openbrowser();
+	  driver =Browser.openBrowser("Chrome");
 	 }
 	 @Test (priority = 1)
 	 public void verifyOnClickingShoppingCategories()

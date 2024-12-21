@@ -34,13 +34,13 @@ public class NaaptolCartTest extends BaseTest
 	 @BeforeMethod
 	 public void LaunchApplication() 
 	 {
-	  driver =Browser.openbrowser();
-	 }
+	  driver =Browser.openBrowser("Chrome");
+	 }	
 
-	@Test (priority = 1)
-	public void verifyAddProductToCartUsingQuickView()
-	{
-		test=reports.createTest("verifyAddProductToCartUsingQuickView");
+	 @Test (priority = 1)
+	 public void verifyAddProductToCartUsingQuickView()
+     {
+	   	 test=reports.createTest("verifyAddProductToCartUsingQuickView");
 		 NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
 		 naaptolHomePage.searchValidProduct("mobile phone");
 		 naaptolHomePage.clickOnSearch();
@@ -57,10 +57,10 @@ public class NaaptolCartTest extends BaseTest
 			 
 		 Assert.assertEquals(cpn,qpn);
 		 Assert.assertEquals(cpp,qpp); 
-	}
-	@Test (priority = 2)
-	public void verifyAddingMultipleProductToCart() throws InterruptedException
-	{
+     }
+	 @Test (priority = 2)
+	 public void verifyAddingMultipleProductToCart() throws InterruptedException
+	 {
 		test=reports.createTest("verifyAddingMultipleProductToCart");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
 		naaptolHomePage.searchValidProduct("mobile phone");
@@ -93,10 +93,10 @@ public class NaaptolCartTest extends BaseTest
 		Assert.assertEquals(cpn2,hpn2); 
 		Assert.assertEquals(cpp1,hpp1);
 		Assert.assertEquals(cpp2,hpp2);
-	}
-	@Test (priority = 3)
-	public void verifyRemovingProductFromProduct() throws StaleElementReferenceException,InterruptedException
-	{
+     }
+     @Test (priority = 3)
+	 public void verifyRemovingProductFromProduct() throws StaleElementReferenceException,InterruptedException
+	 {
 		test=reports.createTest("verifyRemovingProductFromProduct");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
 		naaptolHomePage.searchValidProduct("mobile phone");
@@ -127,11 +127,10 @@ public class NaaptolCartTest extends BaseTest
 		int c2=naaptolCartPage.getCartProductListCount();
 	    
 		Assert.assertNotSame(c1,c2);	
-	}
-	
-	@Test (priority = 4)
-	public void verifyOnChangingProductQuantityCorrectAmountIsDisplayed() throws InterruptedException
-	{
+     }	
+	 @Test (priority = 4)
+	 public void verifyOnChangingProductQuantityCorrectAmountIsDisplayed() throws InterruptedException
+	 {
 		test=reports.createTest("verifyOnChangingProductQuantityCorrectAmountIsDisplayed");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
 		naaptolHomePage.searchValidProduct("mobile phone");
@@ -170,11 +169,11 @@ public class NaaptolCartTest extends BaseTest
 		naaptolCartPage.clickOnClose();
 		naaptolQuickView.clickOnClose();
 		
-	}
-	@Test (priority = 5)
-	public void verifyTotalAmountForMultipleProductInCart() throws InterruptedException
-	{
-		test=reports.createTest("VerifyTotalAmountForMultipleProductInCart");
+     }
+	 @Test (priority = 5)
+	 public void verifyTotalAmountForMultipleProductInCart() throws InterruptedException
+	 {
+	   	test=reports.createTest("VerifyTotalAmountForMultipleProductInCart");
 		NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver);
 		naaptolHomePage.searchValidProduct("mobile phone");
 		naaptolHomePage.clickOnSearch();

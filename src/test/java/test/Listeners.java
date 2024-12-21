@@ -14,42 +14,40 @@ import utility.Screenshot;
 public class Listeners extends BaseTest implements ITestListener 
 {
 	
-
-public void onTestStart (ITestResult result)
-{
-	System.out.println(result.getName()+"Started");
-}
-public void onTestSuccess (ITestResult result)
-{
-	test.log(Status.PASS,result.getName());
- System.out.println(result.getName()+"Passed");
-}
-public void onTestFailure (ITestResult result)
-{
-	test.log(Status.FAIL,result.getName());
- try {
-	 Screenshot.clickscreenshot(driver, result.getName());
- }
- catch (IOException e)
- {
-	 e.printStackTrace();
- }
-}
-public void onTestSkipped (ITestResult result)
-{
-	test.log(Status.SKIP,result.getName());
-	System.out.println(result.getName()+"Skipped");
-}
-public void onFinish(ITestContext result)
-{
-	reports.flush();
-	driver.close();
-}
-public void onStart(ITestContext result)
-{
-	reports = Reports.createReport();
-}
-
-
+    public void onTestStart (ITestResult result)
+    {
+	  System.out.println(result.getName()+"Started");
+    }
+    public void onTestSuccess (ITestResult result)
+    {
+	  test.log(Status.PASS,result.getName());
+      System.out.println(result.getName()+"Passed");
+    }
+    public void onTestFailure (ITestResult result)
+    {
+	  test.log(Status.FAIL,result.getName());
+      try 
+      {
+	    Screenshot.clickscreenshot(driver, result.getName());
+      } 
+      catch (IOException e)
+      {
+	    e.printStackTrace();
+      }
+    }
+    public void onTestSkipped (ITestResult result)
+    {
+	  test.log(Status.SKIP,result.getName());
+	  System.out.println(result.getName()+"Skipped");
+    }
+    public void onFinish(ITestContext result)
+    {
+      reports.flush();
+	  driver.close();
+    }
+    public void onStart(ITestContext result)
+    {
+	  reports = Reports.createReport();
+    }
 
 }

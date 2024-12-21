@@ -9,11 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductDetailPage extends RemoveComma  
 {
- @FindBy (xpath = "//h1[text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement productName;
- @FindBy (xpath = "//span[@class='offer-price']") private WebElement productPrice;
- @FindBy (xpath = "//ul[@class='sizeBox clearfix']") private WebElement colorList;
- @FindBy (xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> color;
- @FindBy (xpath = "//span[text()='Click here to Buy']") private WebElement addToCartButton;
+    @FindBy (xpath = "//h1[text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement productName;
+    @FindBy (xpath = "//span[@class='offer-price']") private WebElement productPrice;
+    @FindBy (xpath = "//ul[@class='sizeBox clearfix']") private WebElement colorList;
+    @FindBy (xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> color;
+    @FindBy (xpath = "//span[text()='Click here to Buy']") private WebElement addToCartButton;
  
     public ProductDetailPage(WebDriver driver)
 	{
@@ -21,9 +21,10 @@ public class ProductDetailPage extends RemoveComma
 	}
     public String getProductName()
 	{
-	 return productName.getText();
+	    return productName.getText();
   	}
-    public double getProductPrice() {
+    public double getProductPrice() 
+    {
  		String [] p =	productPrice.getText().split(" ");
 		return Double.parseDouble(removeCommaFromString(p[0]));
 	}

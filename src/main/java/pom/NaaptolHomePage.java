@@ -21,7 +21,7 @@ public class NaaptolHomePage extends RemoveComma
 	@FindBy (xpath="//input [@value='Continue']") private WebElement continueButton;
 	@FindBy (xpath="//input [@maxlength='6']") private WebElement otp;
 	@FindBy (xpath="//input [@value='Submit']") private WebElement submit; 
-	@FindBy (xpath = "//span [text()='Shopping Categories']") private WebElement shoppingCategory;
+	@FindBy (xpath = "//div[@class='cate_head']") private WebElement shoppingCategory;
 	@FindBy (xpath = "//a [text()='Dual Sim Foldable Flip Mobile With Camera - Gamma (M2 Mini)']") private WebElement productName;
 	@FindBy (xpath = "//div [@class='item_title']") private List<WebElement> productNameList;
 	@FindBy (xpath = "//div[@id='mainMenuContent']") private WebElement shoppingCategoryList;
@@ -81,7 +81,7 @@ public class NaaptolHomePage extends RemoveComma
     }
     public String getProductName()
 	{
-	 return productName.getText();
+		return productName.getText();
 	}
     public void mouseHoverOnProduct(WebDriver driver,int index) 
     {
@@ -93,27 +93,28 @@ public class NaaptolHomePage extends RemoveComma
     {
     	return shoppingCategoryList.isDisplayed();
     }
-    public double getProductPrice() {
+    public double getProductPrice() 
+    {
 		String [] p =	productPrice.getText().split(" ");
 		return Double.parseDouble(removeCommaFromString(p[0]));
 	}
-   public void clickOnProduct()
-   {
-	   productName.click();
-   }
-   public void clickOnQuickView()
+    public void clickOnProduct()
+    {
+	    productName.click();
+    }
+    public void clickOnQuickView()
 	{
 		quickView.click();
 	}
-   public String getProductname(int index)
-   {
-	  return productNameList.get(index).getText();
-   }
-   public double getProductprice(int index)
-   {
+    public String getProductname(int index)
+    {
+	   return productNameList.get(index).getText();
+    }
+    public double getProductprice(int index)
+    {
 	   String [] p =productPriceList.get(index).getText().split(" ");
-		return Double.parseDouble(removeCommaFromString(p[0]));
-   }
+	   return Double.parseDouble(removeCommaFromString(p[0]));
+    }
 	public void clickOnQuickview(int index)
 	{
 		quickviewList.get(index).click();
@@ -128,10 +129,10 @@ public class NaaptolHomePage extends RemoveComma
 		s.selectByValue(value);	
 		for (int i = 0; i <sortOptions.size(); i++) 
 		{
-	        if (sortOptions.get(i).isSelected()) 
-	        {
-	           System.out.println(sortOptions.get(i).getText()+" Option Selected");
-	        }
+	      if (sortOptions.get(i).isSelected()) 
+	      {
+	       System.out.println(sortOptions.get(i).getText()+" Option Selected");
+	      }
 		}
 	}
 	public String getSortedProductName(int index)
