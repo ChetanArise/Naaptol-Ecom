@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -26,6 +27,8 @@ public class NaaptolHomeTest extends BaseTest
 	 {
 	  driver =Browser.openBrowser("Chrome");
 	 }
+	 
+	
 	 @Test (priority = 1)
 	 public void verifyOnClickingShoppingCategories()
 	 {
@@ -53,43 +56,9 @@ public class NaaptolHomeTest extends BaseTest
 		 Assert.assertEquals(qpn,hpn);
 		 Assert.assertEquals(qpp,hpp);
 	 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+	
 	 @Test (priority = 3)
-	 public void verifyProductDetailsInNewTab()
+	 public void verifyProductDetailsInNewTab() throws InterruptedException
 	 {
 		 test=reports.createTest("verifyProductDetailsInNewTab");
 		 NaaptolHomePage naaptolHomePage = new NaaptolHomePage(driver); 
@@ -100,26 +69,14 @@ public class NaaptolHomeTest extends BaseTest
 		 double hpp=naaptolHomePage.getProductprice(0);
 		 
 		 naaptolHomePage.clickOnProduct();
+		 naaptolHomePage.launchChildBrowser(driver);
+		 ProductDetailPage productDetailPage= new ProductDetailPage(driver);
+		 String dpn = productDetailPage.getProductName();
+		 double dpp = productDetailPage.getProductPrice();
+		 Thread.sleep(3000);
+		 Assert.assertEquals(dpn,hpn);
+		 Assert.assertEquals(hpp,dpp);
 		 
-		 Set<String> s= driver.getWindowHandles();
-		 Iterator<String> i=s.iterator();
-		 
-		 while(i.hasNext())
-		 {
-			 String s1=i.next();
-			 driver.switchTo().window(s1);
-			 String title =driver.getTitle();
-			 
-			 if(title.contains("Buy Dual Sim"))
-			 {
-				 ProductDetailPage productDetailPage= new ProductDetailPage(driver);
-				 String dpn = productDetailPage.getProductName();
-				 double dpp = productDetailPage.getProductPrice();
-				Assert.assertEquals(dpn,hpn);
-				Assert.assertEquals(hpp,dpp);
-				break;
-			 }
-		 }	 
 	 }
 	 
 	 @Test (priority = 4)
@@ -141,7 +98,6 @@ public class NaaptolHomeTest extends BaseTest
 		 
 		 Assert.assertNotEquals(spn1,hpn1);
 		 Assert.assertNotEquals(spn2,hpn2);
-		 Assert.assertNotEquals(spn3,hpn3);
-		 
+		 Assert.assertNotEquals(spn3,hpn3);		 
 	 }
 }

@@ -36,6 +36,7 @@ public class NaaptolCartTest extends BaseTest
 	 {
 	  driver =Browser.openBrowser("Chrome");
 	 }	
+	
 
 	 @Test (priority = 1)
 	 public void verifyAddProductToCartUsingQuickView()

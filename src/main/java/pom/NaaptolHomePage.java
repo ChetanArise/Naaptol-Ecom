@@ -1,6 +1,8 @@
 package pom;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.xpath.XPath;
 
@@ -125,5 +127,15 @@ public class NaaptolHomePage extends RemoveComma
 	public String getSortedProductName(int index)
 	{
 		return searchedProducts.get(index).getText();
+	}
+	public void launchChildBrowser(WebDriver driver)
+	{
+		Set<String> handles =driver.getWindowHandles();		
+		Iterator<String> i=handles.iterator();
+
+		while(i.hasNext())
+		{
+			driver.switchTo().window(i.next());
+		}
 	}
 }

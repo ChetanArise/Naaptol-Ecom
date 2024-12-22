@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -24,6 +25,7 @@ public class ProductDetailTest extends BaseTest
 	  driver =Browser.openBrowser("Chrome");
 	 }
 	 
+	 
 	 @Test (priority =1)
 	 public void verifyAddToCartUsingProductDetailPage()
 	 {
@@ -32,15 +34,8 @@ public class ProductDetailTest extends BaseTest
 		naaptolHomePage.searchValidProduct("mobile phone");
 		naaptolHomePage.clickOnSearch();
 		naaptolHomePage.clickOnProduct();
+		naaptolHomePage.launchChildBrowser(driver);
 		
-	    Set<String> s= driver.getWindowHandles();
-	    Iterator<String> i=s.iterator();
-	 
-	    while(i.hasNext())
-	    {
-		 String s1=i.next();
-		 driver.switchTo().window(s1);
-	    }
 	    ProductDetailPage productDetailPage = new ProductDetailPage(driver);
 	    String dpn = productDetailPage.getProductName();
 	    double dpp = productDetailPage.getProductPrice();

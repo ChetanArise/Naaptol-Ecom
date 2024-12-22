@@ -3,6 +3,7 @@ package test;
 import java.io.IOException;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -18,6 +19,8 @@ public class NaaptolSearchTest extends BaseTest
 	 {
 	  driver =Browser.openBrowser("Chrome");
 	 }
+	 
+	 
      @Test (priority = 1)
      public void verifyIfUserIsAbleToPerformValidSearch() throws InterruptedException
      {
@@ -30,7 +33,7 @@ public class NaaptolSearchTest extends BaseTest
     	Thread.sleep(5000);
     	Assert.assertTrue(driver.getTitle().contains("Mobile Phone"));
     	System.out.println(naaptolHomePage.listOfSearchedProducts());
-//    	Assert.assertTrue(naaptolHomePage.ListOfSearchedProducts()>0);
+    	Assert.assertTrue(naaptolHomePage.listOfSearchedProducts()>0);
      }
     
       @Test (priority = 2)
