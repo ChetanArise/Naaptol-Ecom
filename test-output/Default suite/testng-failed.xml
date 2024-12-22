@@ -6,7 +6,7 @@
       <class name="test.NaaptolCartTest">
         <methods>
           <include name="LaunchApplication"/>
-          <include name="VerifyAddingMultipleProductToCart"/>
+          <include name="verifyRemovingProductFromProduct"/>
         </methods>
       </class> <!-- test.NaaptolCartTest -->
     </classes>

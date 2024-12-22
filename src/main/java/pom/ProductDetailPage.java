@@ -25,8 +25,8 @@ public class ProductDetailPage extends RemoveComma
   	}
     public double getProductPrice() 
     {
- 		String [] p =	productPrice.getText().split(" ");
-		return Double.parseDouble(removeCommaFromString(p[0]));
+ 		String [] price =	productPrice.getText().split(" ");
+		return Double.parseDouble(removeCommaFromString(price[0]));
 	}
     public void clickOnAddToCartButton(int index)
     {

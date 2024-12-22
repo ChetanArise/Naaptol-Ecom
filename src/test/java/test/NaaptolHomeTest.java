@@ -43,19 +43,50 @@ public class NaaptolHomeTest extends BaseTest
 		 naaptolHomePage.searchValidProduct("mobile phone");
 		 naaptolHomePage.clickOnSearch();
 		 naaptolHomePage.mouseHoverOnProduct(driver,0);
-		 String hpn =naaptolHomePage.getProductName();
-		 
-		 double hpp=naaptolHomePage.getProductPrice();
-		 System.out.println(hpp);
-		 		 
+		 String hpn =naaptolHomePage.getProductname(0);
+		 double hpp=naaptolHomePage.getProductprice(0);
+		 naaptolHomePage.clickOnQuickview(0); 
 		 NaaptolQuickView naaptolQuickView = new NaaptolQuickView(driver);
-		 naaptolQuickView.clickOnQuickView();
 		 String qpn=naaptolQuickView.getQuickProductName();
 		 double qpp =naaptolQuickView.getQuickProductPrice();
 		 
 		 Assert.assertEquals(qpn,hpn);
 		 Assert.assertEquals(qpp,hpp);
 	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	 @Test (priority = 3)
 	 public void verifyProductDetailsInNewTab()
@@ -65,13 +96,12 @@ public class NaaptolHomeTest extends BaseTest
 		 naaptolHomePage.searchValidProduct("mobile phone");
 		 naaptolHomePage.clickOnSearch();
 		 naaptolHomePage.mouseHoverOnProduct(driver,0);
-		 String hpn =naaptolHomePage.getProductName();
-		 double hpp=naaptolHomePage.getProductPrice();
+		 String hpn =naaptolHomePage.getProductname(0);
+		 double hpp=naaptolHomePage.getProductprice(0);
 		 
 		 naaptolHomePage.clickOnProduct();
 		 
 		 Set<String> s= driver.getWindowHandles();
-		 
 		 Iterator<String> i=s.iterator();
 		 
 		 while(i.hasNext())

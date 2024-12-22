@@ -79,10 +79,6 @@ public class NaaptolHomePage extends RemoveComma
     	act.moveToElement(shoppingCategory);
     	act.perform();
     }
-    public String getProductName()
-	{
-		return productName.getText();
-	}
     public void mouseHoverOnProduct(WebDriver driver,int index) 
     {
 		Actions act = new Actions(driver);
@@ -93,27 +89,18 @@ public class NaaptolHomePage extends RemoveComma
     {
     	return shoppingCategoryList.isDisplayed();
     }
-    public double getProductPrice() 
-    {
-		String [] p =	productPrice.getText().split(" ");
-		return Double.parseDouble(removeCommaFromString(p[0]));
-	}
     public void clickOnProduct()
     {
 	    productName.click();
     }
-    public void clickOnQuickView()
-	{
-		quickView.click();
-	}
     public String getProductname(int index)
     {
 	   return productNameList.get(index).getText();
     }
     public double getProductprice(int index)
     {
-	   String [] p =productPriceList.get(index).getText().split(" ");
-	   return Double.parseDouble(removeCommaFromString(p[0]));
+	   String [] price =productPriceList.get(index).getText().split(" ");
+	   return Double.parseDouble(removeCommaFromString(price[0]));
     }
 	public void clickOnQuickview(int index)
 	{
@@ -125,8 +112,8 @@ public class NaaptolHomePage extends RemoveComma
 	}
 	public void selectSortOption(String value)
 	{
-		Select s = new Select(sort);
-		s.selectByValue(value);	
+		Select option = new Select(sort);
+		option.selectByValue(value);	
 		for (int i = 0; i <sortOptions.size(); i++) 
 		{
 	      if (sortOptions.get(i).isSelected()) 

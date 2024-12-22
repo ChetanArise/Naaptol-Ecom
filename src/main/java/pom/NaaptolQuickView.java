@@ -34,21 +34,16 @@ public class NaaptolQuickView extends RemoveComma
 	{
 		searchButton.click();
 	}
-	public void clickOnQuickView()
-	{
-		quickView.click();
-	}
-	
 	public String getQuickProductName()
 	{
 	    return quickProductName.getText();
 	}
 	public double getQuickProductPrice() 
 	{
-		String p [] =	quickProductPrice.getText().split(" ");
-		return Double.parseDouble(removeCommaFromString(p[0]));
+		String price [] =	quickProductPrice.getText().split(" ");
+		return Double.parseDouble(removeCommaFromString(price[0]));
 	}
-	public void clickOnAddToCartButton(int index)
+	public void clickOnAddToCartButton(int index) 
 	{
 	    if(colorList.isDisplayed()==true)
 	    {

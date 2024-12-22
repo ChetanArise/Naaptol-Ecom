@@ -31,8 +31,8 @@ public class NaaptolCartPage extends RemoveComma
     }
     public double getProductPrice(int index) 
     {
-       String [] p =cartProductPrice.get(index).getText().substring(3).split(" ");
-       return Double.parseDouble(removeCommaFromString(p[0]));
+       String [] price =cartProductPrice.get(index).getText().substring(3).split(" ");
+       return Double.parseDouble(removeCommaFromString(price[0]));
     }
     public void clickOnClose()
     {
@@ -48,13 +48,13 @@ public class NaaptolCartPage extends RemoveComma
 	}
     public double getCartShippingPrice(int index)
     {
-	   String [] s= cartShippingPrice.get(index).getText().substring(3).split(" ");
-	   return Double.parseDouble(removeCommaFromString(s[0]));
+	   String [] sPrice= cartShippingPrice.get(index).getText().substring(3).split(" ");
+	   return Double.parseDouble(removeCommaFromString(sPrice[0]));
     }
     public double getOrderAmount(int index)
     {
-	   String [] o=orderAmount.get(index).getText().split(" ");
-	   return Double.parseDouble(removeCommaFromString(o[0]));
+	   String [] oAmount=orderAmount.get(index).getText().split(" ");
+	   return Double.parseDouble(removeCommaFromString(oAmount[0]));
     }
     public void clickOnQuantity(int index)
     {
@@ -66,7 +66,7 @@ public class NaaptolCartPage extends RemoveComma
     }
     public double getTotalAmount()
     {
-	   String t[]=totalAmount.getText().split(" ");
-	   return Double.parseDouble(removeCommaFromString(t[0]));
+	   String tAmount[]=totalAmount.getText().split(" ");
+	   return Double.parseDouble(removeCommaFromString(tAmount[0]));
     }
 }

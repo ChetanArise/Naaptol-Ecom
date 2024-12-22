@@ -45,7 +45,7 @@ public class NaaptolCartTest extends BaseTest
 		 naaptolHomePage.searchValidProduct("mobile phone");
 		 naaptolHomePage.clickOnSearch();
 		 naaptolHomePage.mouseHoverOnProduct(driver,0);
-		 naaptolHomePage.clickOnQuickView();
+		 naaptolHomePage.clickOnQuickview(0);;
 		 NaaptolQuickView naaptolQuickView= new NaaptolQuickView(driver);
 		 String qpn=naaptolQuickView.getQuickProductName();
 		 double qpp =naaptolQuickView.getQuickProductPrice();
@@ -58,6 +58,7 @@ public class NaaptolCartTest extends BaseTest
 		 Assert.assertEquals(cpn,qpn);
 		 Assert.assertEquals(cpp,qpp); 
      }
+	 
 	 @Test (priority = 2)
 	 public void verifyAddingMultipleProductToCart() throws InterruptedException
 	 {
@@ -94,6 +95,7 @@ public class NaaptolCartTest extends BaseTest
 		Assert.assertEquals(cpp1,hpp1);
 		Assert.assertEquals(cpp2,hpp2);
      }
+	 
      @Test (priority = 3)
 	 public void verifyRemovingProductFromProduct() throws StaleElementReferenceException,InterruptedException
 	 {
@@ -114,7 +116,7 @@ public class NaaptolCartTest extends BaseTest
 		naaptolHomePage.clickOnQuickview(1);
 		naaptolQuickView.clickOnAddToCart();
 		Thread.sleep(2000);
-		int c1=naaptolCartPage.getCartProductListCount();
+		int count1=naaptolCartPage.getCartProductListCount();
 		Thread.sleep(2000);
 		naaptolCartPage.clickOnRemove(0);
 		Thread.sleep(2000);
@@ -124,10 +126,11 @@ public class NaaptolCartTest extends BaseTest
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='cartItems']//ul")));
 		
 		Thread.sleep(2000);
-		int c2=naaptolCartPage.getCartProductListCount();
+		int count2=naaptolCartPage.getCartProductListCount();
 	    
-		Assert.assertNotSame(c1,c2);	
+		Assert.assertNotSame(count1,count2);	
      }	
+     
 	 @Test (priority = 4)
 	 public void verifyOnChangingProductQuantityCorrectAmountIsDisplayed() throws InterruptedException
 	 {
@@ -167,9 +170,9 @@ public class NaaptolCartTest extends BaseTest
 	    Assert.assertEquals(coa2,orderamount2);
 		
 		naaptolCartPage.clickOnClose();
-		naaptolQuickView.clickOnClose();
-		
+		naaptolQuickView.clickOnClose();		
      }
+	 
 	 @Test (priority = 5)
 	 public void verifyTotalAmountForMultipleProductInCart() throws InterruptedException
 	 {
